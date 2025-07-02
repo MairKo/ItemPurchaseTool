@@ -325,6 +325,7 @@
         <members>WorkType</members>
         <members>WorkTypeGroup</members>
         <members>WorkTypeGroupMember</members>
+        <members>Purchase__c</members>
         <name>CustomObject</name>
     </types>
     <types>

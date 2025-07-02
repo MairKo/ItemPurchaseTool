@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ApexVcsIndex">
+    <index-record>
+      <option name="path" value="/src/objects/Purchase__c.object-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/objects/Item__c.object-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/objects/PurchaseLine__c.object-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+  </component>
+</project>
