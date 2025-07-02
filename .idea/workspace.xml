@@ -8,7 +8,6 @@
       <change afterPath="$PROJECT_DIR$/src/objects/Item__c.object-meta.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/objects/PurchaseLine__c.object-meta.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/objects/Purchase__c.object-meta.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/User.object" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/User.object" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
