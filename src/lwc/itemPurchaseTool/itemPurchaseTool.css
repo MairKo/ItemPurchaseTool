@@ -38,7 +38,6 @@
     }
 }
 
-
 .item-card:hover {
     transform: scale(1.02);
 }
@@ -90,15 +89,30 @@
     border-radius: 0.25rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     z-index: 9999;
+    padding: 1rem; /* Перенесен из .slds-modal__content */
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Убедимся, что высота адаптируется под контент */
+}
+
+.modal-container .slds-modal__header {
+    padding: 0 0 1rem 0;
+    border-bottom: 1px solid #d3d3d3;
+    margin-bottom: 1rem;
 }
 
 .modal-container .slds-modal__content {
-    padding: 1rem;
+    padding: 0; /* Убираем внутренние отступы, так как они теперь в .modal-container */
+    flex-grow: 1;
+    overflow-y: auto; /* Добавляем прокрутку, если контент выходит за пределы */
 }
 
 .modal-container .slds-modal__footer {
-    padding: 0.75rem;
+    padding: 0.75rem 0 0 0;
     border-top: 1px solid #d3d3d3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
 }
 
 .account-section {
