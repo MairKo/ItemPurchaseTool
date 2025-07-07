@@ -1,0 +1,131 @@
+<template>
+    <lightning-card title="Item Purchase Tool" icon-name="standard:product" class="full-height">
+        <!-- Секция аккаунта -->
+        <div class="account-section" if:true={account}>
+            <p><strong>Account Name:</strong> {account.Name}</p>
+            <p><strong>Account Number:</strong> {account.AccountNumber}</p>
+            <p><strong>Industry:</strong> {account.Industry}</p>
+        </div>
+
+        <!-- Фильтры и поиск -->
+        <div class="filter-section">
+            <lightning-combobox label="Family" value={selectedFamily} options={familyOptions} onchange={handleFamilyChange}></lightning-combobox>
+            <lightning-combobox label="Type" value={selectedType} options={typeOptions} onchange={handleTypeChange}></lightning-combobox>
+            <lightning-input type="search" label="Search" value={searchKey} onchange={handleSearchChange}></lightning-input>
+            <lightning-button variant="brand" label="Apply Filters" onclick={applyFilters}></lightning-button>
+            <p>Items Count: {items.data.length}</p>
+            <template if:true={isManager}>
+                <lightning-button variant="success" label="Create Item" onclick={openCreateModal}></lightning-button>
+            </template>
+            <lightning-button variant="brand" label="Cart" onclick={openCartModal}></lightning-button>
+        </div>
+
+        <!-- Список элементов в виде сетки -->
+        <template if:true={items.data}>
+            <lightning-layout multiple-rows="true">
+                <template for:each={items.data} for:item="item">
+                    <lightning-layout-item key={item.Id} size="4" padding="around-small">
+                        <div class="item-card">
+                            <h3 class="item-title">{item.Name}</h3>
+                            <img src={item.Image__c} alt={item.Name} />
+                            <p>{item.Description__c}</p>
+                            <p class="item-price"><strong>Price:</strong> ${item.Price__c}</p>
+                            <lightning-input type="number" label="Quantity" value={item.quantity} onchange={handleQuantityChange} data-id={item.Id}></lightning-input>
+                            <lightning-button variant="brand" label="Add to Cart" onclick={handleAddToCart} data-id={item.Id}></lightning-button>
+                            <lightning-button variant="neutral" label="Details" onclick={openDetailsModal} data-id={item.Id}></lightning-button>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </template>
+
+        <!-- Модальное окно корзины -->
+        <template if:true={showCartModal}>
+            <section role="dialog" class="slds-modal slds-fade-in-open" tabindex="-1" aria-labelledby="modal-heading-01">
+                <div class="slds-modal__container" onclick={stopPropagation}>
+                    <div class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-modal__title">Cart</h2>
+                        <lightning-button-icon icon-name="utility:close" onclick={closeCartModal} alternative-text="Close" class="slds-modal__close"></lightning-button-icon>
+                    </div>
+                    <div class="slds-modal__content">
+                        <table class="slds-table slds-table_cell-buffer">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Unit Cost</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <template for:each={cartItems} for:item="cartItem">
+                                <tr key={cartItem.itemId}>
+                                    <td>{cartItem.name}</td>
+                                    <td>{cartItem.amount}</td>
+                                    <td>${cartItem.unitCost}</td>
+                                    <td><lightning-button variant="destructive" label="Remove" onclick={handleRemoveFromCart} data-id={cartItem.itemId}></lightning-button></td>
+                                </tr>
+                            </template>
+                            </tbody>
+                        </table>
+                        <p>Total Items: {totalItems}</p>
+                        <p>Grand Total: ${grandTotal}</p>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning-button variant="neutral" label="Cancel" onclick={closeCartModal}></lightning-button>
+                        <lightning-button variant="success" label="Checkout" onclick={confirmOrder}></lightning-button>
+                    </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop_open" onclick={closeCartModal}></div>
+            </section>
+        </template>
+
+        <!-- Модальное окно с деталями элемента -->
+        <template if:true={showDetailsModal}>
+            <section role="dialog" class="slds-modal slds-fade-in-open" tabindex="-1" aria-labelledby="modal-heading-02">
+                <div class="slds-modal__container" onclick={stopPropagation}>
+                    <div class="slds-modal__header">
+                        <h2 id="modal-heading-02" class="slds-modal__title">Item Details</h2>
+                        <lightning-button-icon icon-name="utility:close" onclick={closeDetailsModal} alternative-text="Close" class="slds-modal__close"></lightning-button-icon>
+                    </div>
+                    <div class="slds-modal__content">
+                        <img src={selectedItemImage} alt={selectedItemName} style="max-width: 100%;" />
+                        <p><strong>Name:</strong> {selectedItemName}</p>
+                        <p><strong>Description:</strong> {selectedItemDescription}</p>
+                        <p><strong>Type:</strong> {selectedItemType}</p>
+                        <p><strong>Family:</strong> {selectedItemFamily}</p>
+                        <p><strong>Price:</strong> ${selectedItemPrice}</p>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning-button variant="neutral" label="Close" onclick={closeDetailsModal}></lightning-button>
+                    </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop_open" onclick={closeDetailsModal}></div>
+            </section>
+        </template>
+
+        <!-- Модальное окно для создания элемента -->
+        <template if:true={showCreateModal}>
+            <section role="dialog" class="slds-modal slds-fade-in-open" tabindex="-1" aria-labelledby="modal-heading-03">
+                <div class="slds-modal__container" onclick={stopPropagation}>
+                    <div class="slds-modal__header">
+                        <h2 id="modal-heading-03" class="slds-modal__title">Create New Item</h2>
+                        <lightning-button-icon icon-name="utility:close" onclick={closeCreateModal} alternative-text="Close" class="slds-modal__close"></lightning-button-icon>
+                    </div>
+                    <div class="slds-modal__content">
+                        <lightning-input label="Name" name="Name" value={newItemName} onchange={handleNewItemChange} required></lightning-input>
+                        <lightning-input label="Description" name="Description" value={newItemDescription} onchange={handleNewItemChange} required></lightning-input>
+                        <lightning-input label="Type" name="Type" value={newItemType} onchange={handleNewItemChange} required></lightning-input>
+                        <lightning-input label="Family" name="Family" value={newItemFamily} onchange={handleNewItemChange} required></lightning-input>
+                        <lightning-input type="number" label="Price" name="Price" value={newItemPrice} onchange={handleNewItemChange} required></lightning-input>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning-button variant="neutral" label="Cancel" onclick={closeCreateModal}></lightning-button>
+                        <lightning-button variant="brand" label="Save" onclick={saveNewItem}></lightning-button>
+                    </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop_open" onclick={closeCreateModal}></div>
+            </section>
+        </template>
+    </lightning-card>
+</template>

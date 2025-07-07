@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ApexVcsIndex">
     <index-record>
-      <option name="path" value="/src/objects/Purchase__c.object-meta.xml" />
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/lwc/itemPurchaseTool/itemPurchaseTool.css" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/objects/PurchaseLine__c.object-meta.xml" />
       <option name="type" value="NEW" />
     </index-record>
     <index-record>
@@ -10,7 +15,81 @@
       <option name="type" value="NEW" />
     </index-record>
     <index-record>
-      <option name="path" value="/src/objects/PurchaseLine__c.object-meta.xml" />
+      <option name="path" value="/.apex/src/triggers/PurchaseLineTrigger.trigger-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/classes/ItemPurchaseControllerTest.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/lwc/itemPurchaseTool/itemPurchaseTool.js" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/lwc/itemPurchaseTool/itemPurchaseTool.js-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/src/lwc/itemPurchaseTool/itemPurchaseTool.js-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/objects/Purchase__c.object-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/classes/ItemPurchaseControllerTest.cls-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/triggers/PurchaseTrigger.trigger-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/triggers/PurchaseTrigger.trigger" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/lwc/itemPurchaseTool/itemPurchaseTool.js-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/classes/ItemPurchaseController.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/classes/ItemPurchaseController.cls-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/lwc/itemPurchaseTool/itemPurchaseTool.html" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/classes/ItemPurchaseController.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/src/classes/ItemPurchaseController.cls-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/classes/ItemPurchaseControllerTest.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/src/lwc/itemPurchaseTool/testQuickAction.js-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/src/classes/ItemPurchaseControllerTest.cls-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/.apex/src/classes/PurchaseLineTriggerHandler.cls-meta.xml" />
       <option name="type" value="NEW" />
     </index-record>
   </component>

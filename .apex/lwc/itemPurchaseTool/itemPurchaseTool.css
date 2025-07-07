@@ -1,0 +1,77 @@
+.full-height {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.account-section, .filter-section, .item-list {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.item-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.item-title {
+    border: 2px solid #00cc00;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    text-align: center;
+}
+
+.item-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.slds-modal__container {
+    max-width: 50rem !important;
+    width: 90% !important;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.slds-modal__content {
+    padding: 20px;
+    background: #fff;
+}
+
+.slds-modal__footer {
+    text-align: right;
+    background: #fff;
+}
+
+.slds-backdrop {
+    z-index: 9998 !important;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.slds-modal {
+    z-index: 9999 !important;
+    background: #fff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.lightning-card {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}

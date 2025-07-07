@@ -1,0 +1,186 @@
+import { LightningElement, wire, track, api } from 'lwc';
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
+import { refreshApex } from '@salesforce/apex';
+import getAccountDetails from '@salesforce/apex/ItemPurchaseController.getAccountDetails';
+import getItems from '@salesforce/apex/ItemPurchaseController.getItems';
+import isManager from '@salesforce/apex/ItemPurchaseController.isManager';
+import createItem from '@salesforce/apex/ItemPurchaseController.createItem';
+import createPurchase from '@salesforce/apex/ItemPurchaseController.createPurchase';
+import getImageUrl from '@salesforce/apex/ItemPurchaseController.getImageUrl';
+import updateItemImage from '@salesforce/apex/ItemPurchaseController.updateItemImage';
+
+export default class ItemPurchaseTool extends NavigationMixin(LightningElement) {
+    @track account;
+    @track items = { data: [] };
+    @track cartItems = [];
+    @track showCreateModal = false;
+    @track showCartModal = false;
+    @track showDetailsModal = false;
+    @track selectedFamily = '';
+    @track selectedType = '';
+    @track searchKey = '';
+    @track newItemName = '';
+    @track newItemDescription = '';
+    @track newItemType = '';
+    @track newItemFamily = '';
+    @track newItemPrice = null;
+    @track isManager = false;
+    @track totalItems = 0;
+    @track grandTotal = 0;
+    @track selectedItemId;
+    @track selectedItemName;
+    @track selectedItemDescription;
+    @track selectedItemType;
+    @track selectedItemFamily;
+    @track selectedItemPrice;
+    @track selectedItemImage;
+    wiredItemsResult;
+
+    @api recordId;
+
+    familyOptions = [
+        { label: 'All', value: '' }, { label: 'Premium', value: 'Premium' }, { label: 'Standard', value: 'Standard' }
+    ];
+    typeOptions = [
+        { label: 'All', value: '' }, { label: 'Electronics', value: 'Electronics' }, { label: 'Clothing', value: 'Clothing' }
+    ];
+
+    @wire(getRecord, { recordId: '$recordId', fields: ['Account.Name', 'Account.AccountNumber', 'Account.Industry'] })
+    wiredAccount({ error, data }) {
+        if (data) this.account = data.fields;
+        else if (error) this.showToast('Error', 'Failed to load account', 'error');
+    }
+
+    connectedCallback() {
+        isManager().then(result => this.isManager = result).catch(error => this.showToast('Error', 'Manager check failed', 'error'));
+        this.refreshItems();
+    }
+
+    @wire(getItems, { family: '$selectedFamily', type: '$selectedType', searchKey: '$searchKey' })
+    wiredItems(result) {
+        this.wiredItemsResult = result;
+        if (result.data) {
+            this.items.data = result.data.map(item => ({ ...item, quantity: 0 }));
+        } else if (result.error) {
+            this.showToast('Error', 'Failed to load items', 'error');
+        }
+    }
+
+    handleFamilyChange(event) { this.selectedFamily = event.target.value; }
+    handleTypeChange(event) { this.selectedType = event.target.value; }
+    handleSearchChange(event) { this.searchKey = event.target.value; }
+    applyFilters() {
+        refreshApex(this.wiredItemsResult).then(() => {
+            this.showToast('Success', 'Filters applied', 'success');
+        }).catch(error => this.showToast('Error', 'Filter application failed', 'error'));
+    }
+    handleQuantityChange(event) {
+        const itemId = event.target.dataset.id;
+        const quantity = parseInt(event.target.value, 10) || 0;
+        const item = this.items.data.find(i => i.Id === itemId);
+        if (item) item.quantity = quantity;
+    }
+    handleAddToCart(event) {
+        const itemId = event.target.dataset.id;
+        const item = this.items.data.find(i => i.Id === itemId);
+        if (item && item.quantity > 0) {
+            const cartItem = this.cartItems.find(i => i.itemId === itemId);
+            if (cartItem) cartItem.amount = item.quantity;
+            else this.cartItems.push({ itemId, name: item.Name, amount: item.quantity, unitCost: item.Price__c });
+            this.updateTotals();
+            this.showToast('Success', 'Item added to cart', 'success');
+        } else {
+            this.showToast('Error', 'Please enter a valid quantity', 'error');
+        }
+    }
+    handleRemoveFromCart(event) {
+        const itemId = event.target.dataset.id;
+        this.cartItems = this.cartItems.filter(i => i.itemId !== itemId);
+        this.updateTotals();
+    }
+    openCreateModal() { this.showCreateModal = true; }
+    closeCreateModal() { this.showCreateModal = false; this.resetNewItemFields(); }
+    handleNewItemChange(event) {
+        const field = event.target.name;
+        this[`newItem${field.charAt(0).toUpperCase() + field.slice(1)}`] = event.target.value;
+    }
+    saveNewItem() {
+        if (!this.newItemName || !this.newItemDescription || !this.newItemType || !this.newItemFamily || this.newItemPrice === null || this.newItemPrice <= 0) {
+            this.showToast('Error', 'All fields are required and price must be positive', 'error');
+            return;
+        }
+        createItem({
+            name: this.newItemName,
+            description: this.newItemDescription,
+            type: this.newItemType,
+            family: this.newItemFamily,
+            price: parseFloat(this.newItemPrice)
+        })
+            .then(item => {
+                return getImageUrl({ itemName: this.newItemName }).then(imageUrl => {
+                    if (imageUrl) updateItemImage({ itemId: item.Id, imageUrl });
+                    return item.Id;
+                }).catch(error => {
+                    console.log('Image fetch error: ', error);
+                    return item.Id;
+                });
+            }).then(() => {
+                this.showToast('Success', 'Item created', 'success');
+                this.closeCreateModal();
+                this.refreshItems();
+            }).catch(error => {
+                this.showToast('Error', 'Item creation failed: ' + (error.body ? JSON.stringify(error.body) : error.message), 'error');
+            });
+    }
+    openCartModal() { this.showCartModal = true; }
+    closeCartModal() { this.showCartModal = false; }
+    openDetailsModal(event) {
+        const itemId = event.target.dataset.id;
+        const item = this.items.data.find(i => i.Id === itemId);
+        if (item) {
+            this.selectedItemId = item.Id;
+            this.selectedItemName = item.Name;
+            this.selectedItemDescription = item.Description;
+            this.selectedItemType = item.Type__c;
+            this.selectedItemFamily = item.Family__c;
+            this.selectedItemPrice = item.Price__c;
+            this.selectedItemImage = item.Image__c || '';
+            this.showDetailsModal = true;
+        }
+    }
+    closeDetailsModal() { this.showDetailsModal = false; }
+    confirmOrder() {
+        const accountId = this.recordId;
+        if (accountId && this.cartItems.length > 0) {
+            createPurchase({ accountId, cartItems: this.cartItems })
+                .then(purchaseId => {
+                    this.showToast('Success', 'Order placed', 'success');
+                    this.closeCartModal();
+                    this.cartItems = [];
+                    this.updateTotals();
+                    this[NavigationMixin.Navigate]({
+                        type: 'standard__recordPage',
+                        attributes: { recordId: purchaseId, objectApiName: 'Purchase__c', actionName: 'view' }
+                    });
+                }).catch(error => this.showToast('Error', 'Order failed: ' + (error.body ? JSON.stringify(error.body) : error.message), 'error'));
+        } else this.showToast('Error', 'Invalid account or cart', 'error');
+    }
+
+    refreshItems() { this.items = { data: [] }; refreshApex(this.wiredItemsResult); }
+    resetNewItemFields() {
+        this.newItemName = ''; this.newItemDescription = ''; this.newItemType = '';
+        this.newItemFamily = ''; this.newItemPrice = null;
+    }
+    updateTotals() {
+        this.totalItems = this.cartItems.reduce((sum, item) => sum + item.amount, 0);
+        this.grandTotal = this.cartItems.reduce((sum, item) => sum + (item.amount * item.unitCost), 0);
+    }
+    showToast(title, message, variant) {
+        this.dispatchEvent(new ShowToastEvent({ title, message, variant }));
+    }
+    stopPropagation(event) {
+        event.stopPropagation();
+    }
+}

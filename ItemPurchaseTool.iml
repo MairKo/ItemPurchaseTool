@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
@@ -20,23 +21,89 @@
   </component>
   <component name="RetrieveModel">
     <selectedComponentNames>
+      <SelectedComponentNamesPersistedState type="APEX_TEST_SUITE" selectAll="true" />
       <SelectedComponentNamesPersistedState type="CUSTOM_APPLICATION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="GLOBAL_VALUE_SET" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="FLOW_TEST" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ROLE" selectAll="true" />
       <SelectedComponentNamesPersistedState type="FLOW" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="APEX_TRIGGER" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="APEX_COMPONENT" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="LIGHTNING_WEB_COMPONENT" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="INSTALLED_PACKAGE" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="LIGHTNING_BUNDLE" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="CUSTOM_OBJECT" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="CUSTOM_LABELS" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="WORKFLOW" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="APEX_PAGE" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="APEX_CLASS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="SHARING_RULES" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ARTICLE_TYPE" selectAll="true" />
       <SelectedComponentNamesPersistedState type="NETWORK" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="CUSTOM_TAB" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="DASHBOARD" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ASSESSMENT_QUESTION_SET" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="COMMUNITY" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="COMMUNITY_TEMPLATE_DEFINITION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="PERMISSION_SET" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CSP_TRUSTED_SITE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="APPROVAL_PROCESS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="EMAIL_TEMPLATE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="TRANSLATIONS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="AUTH_PROVIDER" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="BOT_TEMPLATE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="QUICK_ACTION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="POST_TEMPLATE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_OBJECT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ACCOUNT_RELATIONSHIP_SHARE_RULE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ASSIGNMENT_RULES" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_OBJECT_TRANSLATION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="AUTO_RESPONSE_RULES" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="PLATFORM_CACHE_PARTITION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="LIGHTNING_WEB_COMPONENT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="PERMISSION_SET_GROUP" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="PORTAL" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="APEX_CLASS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="WEB_LINK" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="STANDARD_VALUE_SET" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="LEAD_CONVERT_SETTINGS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ANIMATION_RULE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="APEX_COMPONENT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="FLEXI_PAGE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CERTIFICATE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="GLOBAL_VALUE_SET_TRANSLATION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="INSTALLED_PACKAGE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="BATCH_PROCESS_JOB_DEFINITION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="ASSESSMENT_QUESTION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="BOT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="PROFILE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="REPORT_TYPE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="WORKFLOW" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="DOCUMENT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="LIGHTNING_BUNDLE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="BATCH_CALC_JOB_DEFINITION" selectAll="true" />
       <SelectedComponentNamesPersistedState type="STATIC_RESOURCE" selectAll="true" />
-      <SelectedComponentNamesPersistedState type="LAYOUT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_SITE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_FIELD" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_TAB" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="EMAIL_TEMPLATE_FOLDER" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="HOME_PAGE_LAYOUT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_LABELS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="DOCUMENT_FOLDER" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_METADATA" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="APEX_TRIGGER" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="GROUP" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="PATH_ASSISTANT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="APEX_PAGE" selectAll="true" />
       <SelectedComponentNamesPersistedState type="EXTERNAL_DATA_SOURCE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CONNECTED_APP" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="REPORT_FOLDER" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="REPORT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="LAYOUT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CUSTOM_PERMISSION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="CALL_CENTER" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="REMOTE_SITE_SETTINGS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="APEX_EMAIL_NOTIFICATIONS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="COMMUNITY_THEME_DEFINITION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="DATA_CONNECTOR_S3" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="HOME_PAGE_COMPONENT" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="LIGHTNING_MESSAGE_CHANNEL" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="SITE_DOT_COM" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="SETTINGS" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="QUEUE" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="FLOW_DEFINITION" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="SAML_SSO_CONFIG" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="SHARING_SET" selectAll="true" />
+      <SelectedComponentNamesPersistedState type="LETTERHEAD" selectAll="true" />
     </selectedComponentNames>
     <componentTreeState>
       <RetrieveComponentTreeNodePersistedState componentType="ApexClass" isChecked="true" isMajor="true" />
@@ -217,22 +284,22 @@
         </entry>
         <entry key="00hgL000003ml6TQAQ">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1750649587000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751451799000" />
           </value>
         </entry>
         <entry key="00hgL000003ml6UQAQ">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1750649587000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751451799000" />
           </value>
         </entry>
         <entry key="00hgL000003ml6VQAQ">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1750649587000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751451799000" />
           </value>
         </entry>
         <entry key="00hgL000003ml6WQAQ">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1750649587000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751451799000" />
           </value>
         </entry>
         <entry key="00hgL000003ml6XQAQ">
@@ -707,7 +774,7 @@
         </entry>
         <entry key="00hgL000003ml8yQAA">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1750649587000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751466368000" />
           </value>
         </entry>
         <entry key="00hgL000003ml8zQAA">
@@ -717,7 +784,7 @@
         </entry>
         <entry key="00hgL000003ml9CQAQ">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1750649587000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751466368000" />
           </value>
         </entry>
         <entry key="00hgL000003ml9DQAQ">
@@ -932,7 +999,37 @@
         </entry>
         <entry key="00hgL00000470H7QAI">
           <value>
-            <FileRetrievalHistory lastSynchronizationDate="1751444285000" />
+            <FileRetrievalHistory lastSynchronizationDate="1751466368000" />
+          </value>
+        </entry>
+        <entry key="00hgL0000047DMPQA2">
+          <value>
+            <FileRetrievalHistory lastSynchronizationDate="1751458684000" />
+          </value>
+        </entry>
+        <entry key="00hgL0000047UqHQAU">
+          <value>
+            <FileRetrievalHistory lastSynchronizationDate="1751465633000" />
+          </value>
+        </entry>
+        <entry key="00hgL0000047nBNQAY">
+          <value>
+            <FileRetrievalHistory lastSynchronizationDate="1751466185000" />
+          </value>
+        </entry>
+        <entry key="01IgL00000130FpUAI">
+          <value>
+            <FileRetrievalHistory lastSynchronizationDate="1751449861000" />
+          </value>
+        </entry>
+        <entry key="01IgL000001349lUAA">
+          <value>
+            <FileRetrievalHistory lastSynchronizationDate="1751457005000" />
+          </value>
+        </entry>
+        <entry key="01IgL00000137sPUAQ">
+          <value>
+            <FileRetrievalHistory lastSynchronizationDate="1751465903000" />
           </value>
         </entry>
         <entry key="02ugL000003QYCPQA4">
